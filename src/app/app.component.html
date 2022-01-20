@@ -1,7 +1,8 @@
 <div class="container">
   <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" >
-    <div  class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-      <input  class="fs-5 fw-semibold" [(ngModel)]="userName" />
+    <div  class="d-flex align-items-center  flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+      <label class="fw-semibold" for="user">Benutzername:&nbsp;</label>
+      <input id="user"  class="fs-5 fw-semibold" [(ngModel)]="userName" />
     </div>
     <div class="list-group list-group-flush border-bottom scrollarea">
       <div class="list-group-item list-group-item-action py-3 lh-tight"
@@ -13,5 +14,7 @@
       </div>    
     </div>
   </div>
-  <form (submit)="fnSubmit()"><input class="form-control" [(ngModel)]="message" placeholder="Bitte schreibe hier deine Nachricht!" /></form>
+  <form (submit)="sendMsg()"><input class="form-control" [(ngModel)]="newMsg" placeholder="Bitte schreibe hier deine Nachricht!" 
+    (keyup)="$event.keyCode == 13 && sendMsg()"/>
+    <button (click)="sendMsg()">Senden</button></form>
 </div> 

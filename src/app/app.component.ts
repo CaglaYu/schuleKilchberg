@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ChatService } from './chat.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,24 @@ export class AppComponent {
   title = 'schuleKilchberg';
   msgList=[];
   userName="Ekin";
-  message="";
+  newMsg:string;
+  
+  constructor(private chatService: ChatService) {
+    this.newMsg="";
+  }
 
-
-  fnSubmit(): void{}
+  sendMsg() {
+    this.chatService.sendMsg(this.newMsg);
+    this.newMsg = '';
+  }
+  ngOnInit() {
+    this.chatService
+      .getMessages()
+      .subscribe((message: string) => {
+        this.msgList.push(this.newMsg);
+      });
+  }
+  
 
 }
 
