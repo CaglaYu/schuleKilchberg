@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'schuleKilchberg';
+  msgList=[];
+  userName="Ekin";
+  message="";
+
+
+  fnSubmit(): void{}
+
 }
+
+
